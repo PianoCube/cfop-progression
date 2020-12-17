@@ -147,11 +147,18 @@ export default {
         step.hiddenDescription = true;
         return;
       }
+
+      this.steps.forEach(step => step.hiddenDescription = step.name != name ? true : false)
       
-      this.stages.forEach(stage => stage.steps.forEach(step => step.hiddenDescription = true))
       step.hiddenDescription = false //!step.hiddenDescription;
     }
+  },
+  mounted(){
+    let firstStage = document.getElementsByClassName("stage")[0];
+    firstStage.classList.remove("stage-background-color");
+    firstStage.classList.add("selected-stage-background-color");
   }
+
 }
 </script>
 
